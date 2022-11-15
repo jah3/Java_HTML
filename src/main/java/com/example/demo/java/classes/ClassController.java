@@ -1,4 +1,5 @@
-package com.example.demo.Classes;
+package com.example.demo.java.classes;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,31 +10,29 @@ import java.sql.SQLException;
 
 @Controller
 public class ClassController {
-    HumanDTO human;
+    HumanDTO humanVar;
 
     @GetMapping()
     public String greetingForm(Model model) {
-        model.addAttribute("userName", human);
+        model.addAttribute("userName", humanVar);
         return "index";
     }
 
-
     @PostMapping("/index")
     public String greetingSubmit(@ModelAttribute HumanDTO greeting) throws SQLException {
-    HumanDTO var = new HumanDTO();
-//        model.addAttribute("greeting", greeting);
-        human = greeting;
-        /// add to database
+        HumanDTO var = new HumanDTO();
+        humanVar = greeting;
+        // add to database
         SQLQuery run = new SQLQuery();
-        System.out.println(human.userName+ "  -------------  " + human.userName );
-        run.inserDataDB(human);
+        System.out.println(humanVar.userName + "  -------------  " + humanVar.userName);
+        run.inserDataDB(humanVar);
         return "redirect:result";
     }
 
     @GetMapping("/result")
     public String showResult(Model model) {
-        model.addAttribute("human", human.userName);
-        model.addAttribute("humanpass", human.passWord);
+        model.addAttribute("human", humanVar.userName);
+        model.addAttribute("humanpass", humanVar.passWord);
         return "result";
     }
 }

@@ -1,4 +1,4 @@
-package com.example.demo.Classes;
+package com.example.demo.java.classes;
 import lombok.Getter;
 import lombok.Setter;
 @Getter

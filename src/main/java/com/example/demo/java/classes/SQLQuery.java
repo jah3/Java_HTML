@@ -1,4 +1,4 @@
-package com.example.demo.Classes;
+package com.example.demo.java.classes;
 
 import io.bretty.console.table.Alignment;
 import io.bretty.console.table.ColumnFormatter;
@@ -41,12 +41,12 @@ public class SQLQuery {
 
     public static void inserDataDB(HumanDTO human) throws SQLException {
         System.out.println("  --------ISNERT CLASS ACCESED-----  ");
-        System.out.println(con.getId_count() );
+        System.out.println(con.getIdCount() );
         System.out.println(human.getUserName() + "  -------------  " + human.getPassWord());
         try (Connection conn = DriverManager.getConnection(PropertiesReader.CONN_URL, PropertiesReader.CONN_USER, PropertiesReader.CONN_PASS); Statement stmt = conn.createStatement();) {
             // Execute a query
             System.out.println("Inserting records into the table...");
-            String sql = "INSERT INTO Autentification " + " values (" + (con.getId_count() + 1) + ",'" + human.getUserName() + "','" + human.passWord + "')";
+            String sql = "INSERT INTO Autentification " + " values (" + (con.getIdCount() + 1) + ",'" + human.getUserName() + "','" + human.passWord + "')";
             stmt.executeUpdate(sql);
             System.out.println("Inserted records into the table...");
         } catch (SQLException e) {

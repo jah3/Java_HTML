@@ -1,4 +1,4 @@
-package com.example.demo.Classes;
+package com.example.demo.java.classes;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -6,7 +6,7 @@ import java.sql.*;
 public class SQLConnection {
     @Getter
     @Setter
-    static int id_count = 0;
+    static int idCount = 0;
 
     public void connectMyDB() {
         HumanDTO var = new HumanDTO();
@@ -25,7 +25,7 @@ public class SQLConnection {
             //Retrieving the result
 
             rs.next();
-            id_count = rs.getInt(1);
+            idCount = rs.getInt(1);
             myConn.close();
         } catch (Exception e) {
             e.printStackTrace();

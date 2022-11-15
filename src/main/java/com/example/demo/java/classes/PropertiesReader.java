@@ -1,4 +1,4 @@
-package com.example.demo.Classes;
+package com.example.demo.java.classes;
 
 
 import java.io.File;
