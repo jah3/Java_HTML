@@ -1,25 +1,14 @@
-package com.example.demo.AllDataFolder;
+package com.example.demo.Classes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.sql.SQLException;
+
 @Controller
 public class ClassController {
-
-//    @GetMapping("/index")
-//    public String greetingForm(Model model) {
-//        model.addAttribute("userName", new HumanDTO());
-//        return "result";
-//    }
-//
-//    @PostMapping("/index")
-//    public String greetingSubmit(@ModelAttribute HumanDTO greeting, Model model) {
-//        model.addAttribute("greeting", greeting);
-//        return "index";
-//    }
-
     HumanDTO human;
 
     @GetMapping()
@@ -28,11 +17,16 @@ public class ClassController {
         return "index";
     }
 
+
     @PostMapping("/index")
-    public String greetingSubmit(@ModelAttribute HumanDTO greeting) {
+    public String greetingSubmit(@ModelAttribute HumanDTO greeting) throws SQLException {
+    HumanDTO var = new HumanDTO();
 //        model.addAttribute("greeting", greeting);
         human = greeting;
         /// add to database
+        SQLQuery run = new SQLQuery();
+        System.out.println(human.userName+ "  -------------  " + human.userName );
+        run.inserDataDB(human);
         return "redirect:result";
     }
 

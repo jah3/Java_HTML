@@ -1,4 +1,4 @@
-package com.example.demo.AllDataFolder;
+package com.example.demo.Classes;
 
 
 import java.io.File;
@@ -15,7 +15,7 @@ public class PropertiesReader {
         Properties properties = new Properties();
 
         try {
-            properties.load(new FileInputStream(new File("config.properties")));
+            properties.load(new FileInputStream(new File("src/main/resources/application.properties")));
         } catch (Exception e) {
             e.printStackTrace();
         }

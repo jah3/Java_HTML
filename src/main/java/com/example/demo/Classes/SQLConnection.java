@@ -1,4 +1,4 @@
-package com.example.demo.AllDataFolder;
+package com.example.demo.Classes;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +19,7 @@ public class SQLConnection {
             }
 
             Statement myStmt = myConn.createStatement();
-            String query = "select count(*) from Studenti";
+            String query = "select count(*) from Autentification";
             //Executing the query
             ResultSet rs = myStmt.executeQuery(query);
             //Retrieving the result

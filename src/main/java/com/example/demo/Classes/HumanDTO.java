@@ -1,4 +1,4 @@
-package com.example.demo.AllDataFolder;
+package com.example.demo.Classes;
 import lombok.Getter;
 import lombok.Setter;
 @Getter

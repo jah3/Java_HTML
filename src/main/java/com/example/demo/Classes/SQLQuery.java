@@ -1,4 +1,4 @@
-package com.example.demo.AllDataFolder;
+package com.example.demo.Classes;
 
 import io.bretty.console.table.Alignment;
 import io.bretty.console.table.ColumnFormatter;
@@ -8,7 +8,13 @@ import io.bretty.console.table.Table;
 import java.sql.*;
 
 public class SQLQuery {
-    public static void showDataAutentification() throws SQLException{
+
+
+    static SQLConnection con = new SQLConnection();
+
+
+
+    public static void showDataAutentification() throws SQLException {
         String[] headers = {"ID_", "username_", "password_"};
         int tempid = 0;
         String sql = "";
@@ -31,5 +37,20 @@ public class SQLQuery {
             e.printStackTrace();
         }
 
+    }
+
+    public static void inserDataDB(HumanDTO human) throws SQLException {
+        System.out.println("  --------ISNERT CLASS ACCESED-----  ");
+        System.out.println(con.getId_count() );
+        System.out.println(human.getUserName() + "  -------------  " + human.getPassWord());
+        try (Connection conn = DriverManager.getConnection(PropertiesReader.CONN_URL, PropertiesReader.CONN_USER, PropertiesReader.CONN_PASS); Statement stmt = conn.createStatement();) {
+            // Execute a query
+            System.out.println("Inserting records into the table...");
+            String sql = "INSERT INTO Autentification " + " values (" + (con.getId_count() + 1) + ",'" + human.getUserName() + "','" + human.passWord + "')";
+            stmt.executeUpdate(sql);
+            System.out.println("Inserted records into the table...");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
