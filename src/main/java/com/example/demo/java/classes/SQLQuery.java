@@ -8,11 +8,7 @@ import io.bretty.console.table.Table;
 import java.sql.*;
 
 public class SQLQuery {
-
-
     static SQLConnection con = new SQLConnection();
-
-
 
     public static void showDataAutentification() throws SQLException {
         String[] headers = {"ID_", "username_", "password_"};
@@ -41,14 +37,37 @@ public class SQLQuery {
 
     public static void inserDataDB(HumanDTO human) throws SQLException {
         System.out.println("  --------ISNERT CLASS ACCESED-----  ");
-        System.out.println(con.getIdCount() );
+        System.out.println(con.getIdCount());
         System.out.println(human.getUserName() + "  -------------  " + human.getPassWord());
         try (Connection conn = DriverManager.getConnection(PropertiesReader.CONN_URL, PropertiesReader.CONN_USER, PropertiesReader.CONN_PASS); Statement stmt = conn.createStatement();) {
             // Execute a query
             System.out.println("Inserting records into the table...");
-            String sql = "INSERT INTO Autentification " + " values (" + (con.getIdCount() + 1) + ",'" + human.getUserName() + "','" + human.passWord + "')";
+            String sql = "INSERT INTO Autentification " + " values (" + (con.getIdCount() + 1) + ",'" + human.userName + "','" + human.passWord + "')";
             stmt.executeUpdate(sql);
             System.out.println("Inserted records into the table...");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void checkAutentification(HumanDTO human) throws SQLException {
+        ClassController returnResult = new ClassController();
+        SQLQuery setResult = new SQLQuery();
+        String user, password;
+        user = human.userName;
+        password = human.passWord;
+        try (Connection conn = DriverManager.getConnection(PropertiesReader.CONN_URL, PropertiesReader.CONN_USER, PropertiesReader.CONN_PASS); Statement stmt = conn.createStatement();) {
+            // Execute a query
+            String query = "SELECT * FROM Autentification WHERE username_='" + user + "' AND password_='" + password + "'";
+            Statement myStmt = conn.createStatement();
+            ResultSet rs = myStmt.executeQuery(query);
+            if (rs.isBeforeFirst()) {
+                System.out.println("The user exists");
+                human.setUserExistsResult("1");
+            } else {
+                System.out.println("The user does not exists");
+                human.setUserExistsResult("0");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

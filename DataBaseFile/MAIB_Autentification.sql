@@ -22,5 +22,4 @@ insert into Autentification values
 (1,'user','user')
 select * from Autentification
 
-
 --drop  table Studenti

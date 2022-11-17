@@ -4,6 +4,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class HumanDTO {
+    String userExistsResult;
     String userName;
     String passWord;
 }

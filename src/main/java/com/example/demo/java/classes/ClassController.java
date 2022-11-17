@@ -19,14 +19,20 @@ public class ClassController {
     }
 
     @PostMapping("/index")
-    public String greetingSubmit(@ModelAttribute HumanDTO greeting) throws SQLException {
+    public Object greetingSubmit(@ModelAttribute HumanDTO greeting , Model model) throws SQLException {
         HumanDTO var = new HumanDTO();
         humanVar = greeting;
         // add to database
         SQLQuery run = new SQLQuery();
         System.out.println(humanVar.userName + "  -------------  " + humanVar.userName);
-        run.inserDataDB(humanVar);
-        return "redirect:result";
+        run.checkAutentification(humanVar);
+        if(humanVar.userExistsResult == "1"){
+            return "redirect:result";
+        }
+        else{
+            model.addAttribute("error",   "The username or password is incorrect");
+            return "/index";
+        }
     }
 
     @GetMapping("/result")

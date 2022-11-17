@@ -17,7 +17,6 @@ public class SQLConnection {
             } else {
                 System.out.println("Failed to make connection!");
             }
-
             Statement myStmt = myConn.createStatement();
             String query = "select count(*) from Autentification";
             //Executing the query
