@@ -63,10 +63,10 @@ public class SQLQuery {
             ResultSet rs = myStmt.executeQuery(query);
             if (rs.isBeforeFirst()) {
                 System.out.println("The user exists");
-                human.setUserExistsResult("1");
+                human.setUserExistsResult(true);
             } else {
                 System.out.println("The user does not exists");
-                human.setUserExistsResult("0");
+                human.setUserExistsResult(false);
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -18,8 +18,20 @@ create table Autentification(
     username_		varchar(30),
 	password_		varchar(30),
 )
+
+
+create table Comments(
+	comment varchar(255)
+)
+insert into Comments values
+('foarte bun website!. Bravo')
+
+
+
+
 insert into Autentification values
-(1,'user','user')
-select * from Autentification
+(1,'user','user'),
+(2,'qwerty','qwerty!')
+select * from Autentification,Comments
 
 --drop  table Studenti

@@ -10,23 +10,23 @@ import java.sql.SQLException;
 
 @Controller
 public class ClassController {
-    HumanDTO humanVar;
+    HumanDTO HumanDTO;
 
     @GetMapping()
     public String greetingForm(Model model) {
-        model.addAttribute("userName", humanVar);
+        model.addAttribute("userName", HumanDTO);
         return "index";
     }
 
     @PostMapping("/index")
     public Object greetingSubmit(@ModelAttribute HumanDTO greeting , Model model) throws SQLException {
         HumanDTO var = new HumanDTO();
-        humanVar = greeting;
+        HumanDTO = greeting;
         // add to database
         SQLQuery run = new SQLQuery();
-        System.out.println(humanVar.userName + "  -------------  " + humanVar.userName);
-        run.checkAutentification(humanVar);
-        if(humanVar.userExistsResult == "1"){
+        System.out.println(HumanDTO.userName + "  -------------  " + HumanDTO.userName);
+        run.checkAutentification(HumanDTO);
+        if(HumanDTO.userExistsResult = true){
             return "redirect:result";
         }
         else{
@@ -37,8 +37,8 @@ public class ClassController {
 
     @GetMapping("/result")
     public String showResult(Model model) {
-        model.addAttribute("human", humanVar.userName);
-        model.addAttribute("humanpass", humanVar.passWord);
+        model.addAttribute("human", HumanDTO.userName);
+        model.addAttribute("password", HumanDTO.passWord);
         return "result";
     }
 }
