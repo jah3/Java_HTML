@@ -14,7 +14,7 @@ create database MAIB_Autentification
 GO
 use MAIB_Autentification
 create table Autentification(
-    ID_				int primary key,
+    ID_				int primary key auto AUTO_INCREMENT,
     username_		varchar(30),
 	password_		varchar(30),
 )
