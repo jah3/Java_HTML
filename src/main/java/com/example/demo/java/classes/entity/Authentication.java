@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "authentication")
@@ -16,7 +17,7 @@ public class Authentication {
     @Id
     @Column(name = "ID_")
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    Integer id;
+    BigInteger id;
 
     @Column(name = "username_")
     String username;
