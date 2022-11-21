@@ -94,9 +94,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td th:text="${human}"></td>
-                    <td th:text="${password}"></td>
+                <tr th:each="human: ${humans}">
+                    <td th:text="${human.username}"></td>
+                    <td th:text="${human.password}"></td>
                 </tr>
             </tbody>
         </table>

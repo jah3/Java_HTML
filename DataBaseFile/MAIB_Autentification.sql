@@ -13,25 +13,18 @@ GO
 create database MAIB_Autentification
 GO
 use MAIB_Autentification
-create table Autentification(
-    ID_				int primary key auto AUTO_INCREMENT,
+create table authentication(
+    ID_				int IDENTITY primary key ,
     username_		varchar(30),
 	password_		varchar(30),
 )
 
 
-create table Comments(
-	comment varchar(255)
-)
-insert into Comments values
-('foarte bun website!. Bravo')
 
 
 
+insert into authentication values
+('user','user'),
+('qwerty','qwerty!')
 
-insert into Autentification values
-(1,'user','user'),
-(2,'qwerty','qwerty!')
-select * from Autentification,Comments
-
---drop  table Studenti
+--select * from authentication

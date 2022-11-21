@@ -25,8 +25,8 @@ public class ClassController {
         // add to database
         SQLQuery run = new SQLQuery();
         System.out.println(HumanDTO.userName + "  -------------  " + HumanDTO.userName);
-        run.checkAutentification(HumanDTO);
-        if(HumanDTO.userExistsResult = true){
+        SQLQuery.checkAutentification(HumanDTO);
+        if(HumanDTO.userExistsResult == true){
             return "redirect:result";
         }
         else{
