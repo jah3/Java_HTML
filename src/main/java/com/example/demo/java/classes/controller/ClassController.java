@@ -30,7 +30,7 @@ public class ClassController {
         for (Authentication authentication : authenticationRepository.findAll()) {
 
             System.out.println(humanDTO.getUsername()+ " " + humanDTO.getPassword());
-            
+
             if (authentication.getUsername().equals(humanDTO.getUsername())) {
                 model.addAttribute("error", "wrong credentials");
                 return "index";

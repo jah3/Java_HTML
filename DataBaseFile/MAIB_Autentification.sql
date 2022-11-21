@@ -27,4 +27,4 @@ insert into authentication values
 ('user','user'),
 ('qwerty','qwerty!')
 
---select * from authentication
+select * from authentication
