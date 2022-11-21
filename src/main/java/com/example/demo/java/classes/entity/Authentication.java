@@ -3,6 +3,7 @@ package com.example.demo.java.classes.entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigInteger;
@@ -12,6 +13,7 @@ import java.math.BigInteger;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 public class Authentication {
 
     @Id
