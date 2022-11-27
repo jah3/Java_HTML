@@ -1,28 +1,29 @@
 package com.example.demo.java.classes.controller;
-
-import com.example.demo.java.classes.dto.HumanDTO;
 import com.example.demo.java.classes.entity.Authentication;
 import com.example.demo.java.classes.repository.AuthenticationRepository;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-
 @Controller
 @RequiredArgsConstructor
 public class ClassController {
 
     private final AuthenticationRepository authenticationRepository;
 
-    @GetMapping()
+    @GetMapping("/test")
+    @ResponseBody
+    public String test (@RequestParam String word){
+        return  word;
+    }
+
+   @GetMapping()
     public String greetingForm() {
         return "index";
-    }
+   }
 
     @PostMapping("/index")
     public String greetingSubmit(@ModelAttribute @NotNull Authentication humanDTO, Model model) throws SQLException {
