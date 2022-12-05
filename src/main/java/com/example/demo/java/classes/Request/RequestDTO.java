@@ -1,4 +1,4 @@
-package com.example.demo.java.classes.Request;
+package com.example.demo.java.classes.request;
 
 import com.example.demo.java.classes.dto.HumanDTO;
 import com.example.demo.java.classes.dto.TaskTime;
