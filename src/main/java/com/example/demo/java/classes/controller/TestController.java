@@ -37,8 +37,7 @@ public class TestController {
         return "User successfully added !\nUsername [ " + userName + " ] \nPassword [ " + passWord + " ]";
     }*/
 
-//    la tine in afara de autentificare in DTO va fi un oarecare task si automat se va pune ziua de astazi.
-//    Adica va fi obiectul Task cu descrierea si timpul crearii.
+
 
     @PostMapping("/user")
     public RequestDTO registerUserCredential(@RequestBody RequestDTO user) {
