@@ -45,7 +45,7 @@ public class TestController {
         String currentTime = new SimpleDateFormat("HH.mm").format(new Date());
 
 
-        user.getTaskTime().setCurrentTime(currentTime);
+      
         System.out.println("User ID: " +  user.getUser().getUsername());
         System.out.println("User ID: " +  user.getUser().getPassword());
         return user;
