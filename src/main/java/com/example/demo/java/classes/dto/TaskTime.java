@@ -5,8 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class HumanDTO {
-    String username;
-    String password;
-
+public class TaskTime {
+    String CurrentTime;
 }

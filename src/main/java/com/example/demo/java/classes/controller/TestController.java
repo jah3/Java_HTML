@@ -1,5 +1,6 @@
 package com.example.demo.java.classes.controller;
 
+import com.example.demo.java.classes.Request.RequestDTO;
 import com.example.demo.java.classes.dto.HumanDTO;
 import com.example.demo.java.classes.entity.Authentication;
 import com.example.demo.java.classes.repository.AuthenticationRepository;
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 //@Controller
 @RestController
@@ -43,10 +47,18 @@ public class TestController {
         return "User successfully added !\nUsername [ " + userName + " ] \nPassword [ " + passWord + " ]";
     }*/
 
-        @PostMapping("/user")
-        public HumanDTO registerUserCredential(@RequestBody HumanDTO user) {
-            System.out.println("User     ID: " + user.getUsername());
-            System.out.println("Password ID: " + user.getPassword());
-            return user;
-        }
+//    la tine in afara de autentificare in DTO va fi un oarecare task si automat se va pune ziua de astazi.
+//    Adica va fi obiectul Task cu descrierea si timpul crearii.
+
+    @PostMapping("/user")
+    public RequestDTO registerUserCredential(@RequestBody RequestDTO user) {
+        String timeDate = new SimpleDateFormat("yyyy.MM.dd").format(new java.util.Date());
+        String currentTime = new SimpleDateFormat("HH.mm").format(new Date());
+
+
+        user.getTaskTime().setCurrentTime(currentTime);
+        System.out.println("User ID: " +  user.getUser().getUsername());
+        System.out.println("User ID: " +  user.getUser().getPassword());
+        return user;
+    }
 }
